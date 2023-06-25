@@ -5,7 +5,7 @@ public class ReverseArray {
         int first = 0;
         int last = number.length - 1;
 
-        while(first <= last) {
+        while(first < last) {
             int swap = number[first];
             number[first] = number[last];
             number[last] = swap;
