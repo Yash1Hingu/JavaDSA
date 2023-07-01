@@ -1,11 +1,10 @@
 package Arrays;
-import java.util.*;
 public class BuySell {
     public static int buysell(int stock[]) {
         int buyPrice = Integer.MAX_VALUE;
         int maxProfit = 0;
 
-        for(int i = 0;i < stock.length;i++) {
+        for(int i = 0;i < stock.length;i++) { 
             if(buyPrice < stock[i]) {
                 int profit = stock[i] - buyPrice;
                 maxProfit = Math.max(maxProfit,profit);
