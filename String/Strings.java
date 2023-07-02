@@ -45,8 +45,20 @@ public class Strings {
         System.out.println("Largest String in Lexicographic Order is "+largest);
     }
 
+    // String Question 2,3
+    public static void stringQuestion2() {
+        String str = "Shradhadidi";
+        String str1 = "ApanaCollege";
+        String str2 = "Shradhadidi";
+
+        System.out.println(str.equals(str1) + " " + str.equals(str2));
+        String str3 = str1.replace("l","");
+        System.out.println(str3);
+    }
+
     public static void main(String args[]) {
         // subString();
-        comparision();
+        // comparision();
+        stringQuestion2();
     }
 }
