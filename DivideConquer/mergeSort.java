@@ -7,7 +7,7 @@ public class mergeSort {
 			return;
 		}
 
-		//Work                                                11 
+		//Work
 		//Divide
 		int mid = si + (ei-si)/2;
 		mergesorting(arr,si,mid);
