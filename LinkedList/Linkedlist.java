@@ -102,8 +102,27 @@ public class Linkedlist{
 	}
 
 	// remove last 
-	public void removeLast(){
+	public int removeLast(){
+		if(size == 0){
+			System.out.println("LL is empty");
+			return Integer.MIN_VALUE;
+		} else if(size == 1){
+			int val = head.data;
+			head = tail = null;
+			size = 0;
+			return val;
+		}
 		
+		// i = size -2
+		Node prev = head;
+		for(int i = 0;i < size -2;i++){
+			prev = prev.next;
+		}
+		int val = prev.data;
+		prev.next = null;
+		size--;
+		tail = prev;
+		return val;
 	}
 	public static void main(String args[]){
 		Linkedlist li = new Linkedlist();
@@ -114,6 +133,9 @@ public class Linkedlist{
 		li.add(3,7);
 		li.print();
 		li.removeFirst();
+		li.print();
+		System.out.println(li.size);
+		li.removeLast();
 		li.print();
 		System.out.println(li.size);
 	}
