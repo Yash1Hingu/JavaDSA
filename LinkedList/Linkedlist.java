@@ -162,6 +162,19 @@ public class Linkedlist{
 	public int recSerach(int key){
 		return helper(head,key);
 	}
+
+	public void reverse(){
+		Node prev = null;
+		Node curr = head;
+		Node next;
+		while(curr != null){
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+		head = prev;
+	}
 	public static void main(String args[]){
 		Linkedlist li = new Linkedlist();
 		li.addFirst(1);
@@ -177,5 +190,7 @@ public class Linkedlist{
 		li.print();
 		System.out.println(li.size);
 		System.out.println(li.recSerach(5));
+		li.reverse();
+		li.print();
 	}
 }
