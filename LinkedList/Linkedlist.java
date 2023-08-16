@@ -124,6 +124,44 @@ public class Linkedlist{
 		tail = prev;
 		return val;
 	}
+
+
+	public int itrSerach(int key){
+		Node temp = head;
+		int idx = 0;
+		while(temp != null){
+			if(temp.data == key){
+				return idx;
+			}
+			temp = temp.next;
+			idx++;
+		}
+		return -1;
+	}
+
+
+	// TC : O(n) SC : O(n)[call stack]
+	public int helper(Node head,int key){
+		//base case
+		if(head == null){
+			return -1;
+		}
+		if(head.data == key){
+			return 0;
+		}
+
+		// recursion call
+		int idx = helper(head.next,key);
+		
+		// work
+		if(idx == -1){
+			return -1;
+		}
+		return idx+1;
+	}
+	public int recSerach(int key){
+		return helper(head,key);
+	}
 	public static void main(String args[]){
 		Linkedlist li = new Linkedlist();
 		li.addFirst(1);
@@ -138,5 +176,6 @@ public class Linkedlist{
 		li.removeLast();
 		li.print();
 		System.out.println(li.size);
+		System.out.println(li.recSerach(5));
 	}
 }
