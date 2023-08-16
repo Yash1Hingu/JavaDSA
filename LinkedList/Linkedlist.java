@@ -175,22 +175,32 @@ public class Linkedlist{
 		}
 		head = prev;
 	}
+
+	public void deleteNthfromend(int n){
+		if(n == size){
+			head = head.next;
+			return;
+		}
+		
+		int i = 1;
+		Node prev = head;
+		int iToFind = size - n;
+		while(i < iToFind){
+			prev = prev.next;
+			i++;
+		}
+		prev.next = prev.next.next;
+		size--;
+		return;
+	}
 	public static void main(String args[]){
 		Linkedlist li = new Linkedlist();
 		li.addFirst(1);
 		li.addFirst(2);
 		li.addLast(4);
 		li.addLast(5);
-		li.add(3,7);
 		li.print();
-		li.removeFirst();
-		li.print();
-		System.out.println(li.size);
-		li.removeLast();
-		li.print();
-		System.out.println(li.size);
-		System.out.println(li.recSerach(5));
-		li.reverse();
+		li.deleteNthfromend(2);
 		li.print();
 	}
 }
