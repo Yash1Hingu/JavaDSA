@@ -125,7 +125,7 @@ public class Linkedlist{
 		return val;
 	}
 
-
+	// Iterative Search
 	public int itrSerach(int key){
 		Node temp = head;
 		int idx = 0;
@@ -159,10 +159,13 @@ public class Linkedlist{
 		}
 		return idx+1;
 	}
+
+	//Recursive Search
 	public int recSerach(int key){
 		return helper(head,key);
 	}
 
+	//Reverse The Linked List
 	public void reverse(){
 		Node prev = null;
 		Node curr = head;
@@ -176,6 +179,7 @@ public class Linkedlist{
 		head = prev;
 	}
 
+	// delete Nth Node from End
 	public void deleteNthfromend(int n){
 		if(n == size){
 			head = head.next;
@@ -193,14 +197,58 @@ public class Linkedlist{
 		size--;
 		return;
 	}
+
+	// find mid of linked list -- slow fast approch
+	public Node midNode(){
+		Node slow = head;
+		Node fast = head;
+		
+		while(fast != null && fast.next != null){
+			slow = slow.next;//+1
+			fast = fast.next.next;//+2
+		}
+
+		return slow;
+	}
+
+	//Is Paildrome Linked List
+	public boolean isPalidrome(){
+		
+		Node left,right;
+		left = head;
+		//step 1 : Find Mid Node
+		Node mid = midNode();
+
+		//step 2 : reverse 2nd half
+		Node prev = null;
+		Node curr = mid;
+		Node next;
+		while(curr != null){
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+		right = prev;
+
+		//step 3 : compare
+		while(right != null){
+			if(left.data != right.data){
+				return false;
+			}
+			right = right.next;
+			left = left.next;
+		}
+		return true;
+	}
+
 	public static void main(String args[]){
 		Linkedlist li = new Linkedlist();
-		li.addFirst(1);
-		li.addFirst(2);
-		li.addLast(4);
-		li.addLast(5);
+		li.addLast(1);
+		li.addLast(2);
+		li.addLast(2);
+		li.addLast(1);
 		li.print();
-		li.deleteNthfromend(2);
-		li.print();
+		System.out.println(li.isPalidrome());
 	}
 }
